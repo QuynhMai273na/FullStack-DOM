@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- START SCREEN -->
+      <div class="screen active" id="start-screen">
+        <h1>Quiz Time!</h1>
+        <p>Test your knowledge with these fun questions</p>
+        <button id="start-btn">Start Quiz</button>
+      </div>
+
+      <!-- QUIZ SCREEN - HARDCODED EXAMPLE -->
+      <!-- Remove 'active' class and add it to start-screen to see this -->
+      <div class="screen" id="quiz-screen">
+        <div class="quiz-header">
+          <h2 id="question-text">What is the capital of France?</h2>
+          <div class="quiz-info">
+            <p>
+              Question <span id="current-question">1</span> of
+              <span id="total-questions">5</span>
+            </p>
+            <p>Score: <span id="score">0</span></p>
+          </div>
+        </div>
+
+        <div id="answers-container" class="answers-container">
+          <!-- HARDCODED ANSWER BUTTONS FOR VISUALIZATION -->
+          <button class="answer-btn" data-correct="false">London</button>
+          <button class="answer-btn" data-correct="false">Berlin</button>
+          <button class="answer-btn" data-correct="true">Paris</button>
+          <button class="answer-btn" data-correct="false">Madrid</button>
+        </div>
+
+        <div class="progress-bar">
+          <div id="progress" class="progress" style="width: 20%"></div>
+        </div>
+      </div>
+
+      <!-- RESULT SCREEN - HARDCODED EXAMPLE -->
+      <div id="result-screen" class="screen">
+        <h1>Quiz Results</h1>
+        <div class="result-info">
+          <p>
+            You scored <span id="final-score">4</span> out of
+            <span id="max-score">5</span>
+          </p>
+          <div id="result-message">Great job! You know your stuff!</div>
+        </div>
+        <button id="restart-btn">Restart Quiz</button>
+      </div>
+    </div>
+
+    <!-- INSTRUCTIONS FOR STUDENTS -->
+    <div
+      style="
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+        font-family: sans-serif;
+        font-size: 14px;
+      "
+    >
+      <h3 style="color: #e86a33; margin-bottom: 10px">🎯 For Students:</h3>
+      <p style="margin-bottom: 8px">
+        <strong>To see different screens:</strong>
+      </p>
+      <ul style="margin-left: 15px; margin-bottom: 10px">
+        <li>
+          Move the <code>active</code> class between different screen divs
+        </li>
+        <li>See quiz questions, answer states, and results</li>
+      </ul>
+      <p style="color: #666; font-size: 12px">
+        This shows what your JavaScript will create dynamically!
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
