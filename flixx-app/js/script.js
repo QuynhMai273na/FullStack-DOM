@@ -45,11 +45,12 @@ async function getData(endpoint) {
       throw new Error('API Key not found');
     }
     showSpinner();
-    // const fullapi = `${URL_base}${endpoint}?api_key=${API_key}`;
-    // console.log(fullapi);
-    const results = await fetch(`${URL_base}${endpoint}?api_key=${API_key}`);
-    const data = await results.json();
-    return data;
+
+    const response = await axios.get(`${URL_base}${endpoint}`, {
+      params: { api_key: API_key },
+    });
+
+    return response.data;
   } catch (error) {
     console.log(error);
   } finally {
@@ -60,6 +61,7 @@ async function getPlayingMovie() {
   const { results } = await getData(API.playingMovies);
   return results;
 }
+
 async function getPopularMovies() {
   const { results } = await getData(API.popularMovies);
   return results;
@@ -79,7 +81,7 @@ async function getMovieDetails() {
   }
 
   const movieDetails = await getData(API.movieDetails(movieId));
-  // console.log(movieDetails);
+  console.log(movieDetails);
   return movieDetails;
 }
 async function getShowDetails() {
@@ -105,13 +107,15 @@ async function getSearchResults(endpoint) {
       throw new Error('API Key not found');
     }
     showSpinner();
-    // const fullapi = `${URL_base}${endpoint}?api_key=${API_key}`;
-    // console.log(fullapi);
-    const results = await fetch(
-      `${URL_base}search/${global.search.type}?api_key=${API_key}&query=${global.search.term}&page=${global.search.page}`
-    );
-    const data = await results.json();
-    return data;
+
+    const results = await axios.get(`${URL_base}search/${global.search.type}`, {
+      params: {
+        api_key: API_key,
+        query: global.search.term,
+        page: global.search.page,
+      },
+    });
+    return results.data;
   } catch (error) {
     console.log(error);
   } finally {
